@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
+
+   <h:form>
+   		<div>
+   			<h:outputLabel value="Titulo" />
+   			<h:inputText value="#{adminLivrosBean.livro.titulo}" />
+   		</div>
+   		<div>
+   			<h:outputLabel value="Descrição" />
+   			<h:inputTextarea cols="20" rols="4" value="#{adminLivrosBean.livro.descricao}" />
+   		</div>
+   		<div>
+   			<h:outputLabel value="Número de paginas" />
+   			<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" />
+   		</div>
+   		<div>
+   			<h:outputLabel value="Preço" />
+   			<h:inputText value="#{adminLivrosBean.livro.preco}" />
+   		</div>
+   		<div>
+   			<h:outputLabel value="Autores" />
+   			<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
+   				<f:selectItems var="autor" value="#{adminLivrosBean.autores}" itemValue="#{autor.id}" itemLabel="#{autor.nome}"> </f:selectItems>	
+   			</h:selectManyListbox>
+   		</div>
+   		<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar()}"/>
+   
+   </h:form>
+   
+</html>

@@ -5,21 +5,26 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
    <h:form>
+   <h:messages />
    		<div>
    			<h:outputLabel value="Titulo" />
-   			<h:inputText value="#{adminLivrosBean.livro.titulo}" />
+   			<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true" requiredMessage="Titulo é obrigatório"/>
    		</div>
    		<div>
    			<h:outputLabel value="Descrição" />
-   			<h:inputTextarea cols="20" rols="4" value="#{adminLivrosBean.livro.descricao}" />
+   			<h:inputTextarea cols="20" rols="4" value="#{adminLivrosBean.livro.descricao}" required="true" requiredMessage="Descrição obrigatorio"/>
    		</div>
    		<div>
-   			<h:outputLabel value="Número de paginas" />
-   			<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" />
+   			<h:outputLabel value="Número de paginas"/>
+   			<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true" requiredMessage="Paginas obrigatorio">
+   				<f:validateLongRange minimum="80"/>
+   			</h:inputText>
    		</div>
    		<div>
    			<h:outputLabel value="Preço" />
-   			<h:inputText value="#{adminLivrosBean.livro.preco}" />
+   			<h:inputText value="#{adminLivrosBean.livro.preco}" required="true" requiredMessage="Preço obrigatorio">
+   				<f:validateDoubleRange minimum="20" maximum="150"/>
+   			</h:inputText>
    		</div>
    		<div>
    			<h:outputLabel value="Autores" />

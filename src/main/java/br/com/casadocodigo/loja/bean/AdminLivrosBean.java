@@ -23,7 +23,7 @@ public class AdminLivrosBean {
 	@Inject
 	private LivroDao dao;
 	private Livro livro = new Livro();
-	private List<Integer> autoresId = new ArrayList<Integer>();
+	
 	@Inject
 	private AutorDao autorDao;
 	@Inject
@@ -35,7 +35,6 @@ public class AdminLivrosBean {
 	
 	@Transactional
 	public String salvar(){
-		autoresId.forEach(id -> livro.getAutores().add(new Autor(id)));
 		dao.salvar(livro);
 		currentInstance.getExternalContext().getFlash().setKeepMessages(true);
 		currentInstance.addMessage(null, new FacesMessage("Livro salvo com sucesso"));
@@ -53,15 +52,6 @@ public class AdminLivrosBean {
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
-
-	public List<Integer> getAutoresId() {
-		return autoresId;
-	}
-
-	public void setAutoresId(List<Integer> autoresId) {
-		this.autoresId = autoresId;
-	}
-	
 	
 
 }

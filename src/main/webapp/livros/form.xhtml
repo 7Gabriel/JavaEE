@@ -32,9 +32,16 @@
    		</div>
    		<div>
    			<h:outputLabel value="Autores" />
-   			<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
-   				<f:selectItems var="autor" value="#{adminLivrosBean.autores}" itemValue="#{autor.id}" itemLabel="#{autor.nome}"> </f:selectItems>	
+   			<h:selectManyListbox value="#{adminLivrosBean.livro.autores}" converter="autorConverter" id="autores">
+   				<f:selectItems var="autor" value="#{adminLivrosBean.autores}" itemValue="#{autor}" itemLabel="#{autor.nome}"> </f:selectItems>	
    			</h:selectManyListbox>
+   		</div>
+   		<div>
+	   		 <h:outputLabel value="Data de Publicação" />
+	   		 <h:inputText value="#{adminLivrosBean.livro.dataPublicacao.time}" id="dataPublicacao">
+	   		 	<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+	   		 </h:inputText>
+	   		 <h:message for="dataPublicacao"/>
    		</div>
    		<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar()}"/>
    

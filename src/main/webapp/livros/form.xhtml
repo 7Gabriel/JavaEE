@@ -8,23 +8,27 @@
    <h:messages />
    		<div>
    			<h:outputLabel value="Titulo" />
-   			<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true" requiredMessage="Titulo é obrigatório"/>
+   			<h:inputText value="#{adminLivrosBean.livro.titulo}" required="true" id="titulo"/>
+   			<h:message for="titulo"/>
    		</div>
    		<div>
    			<h:outputLabel value="Descrição" />
-   			<h:inputTextarea cols="20" rols="4" value="#{adminLivrosBean.livro.descricao}" required="true" requiredMessage="Descrição obrigatorio"/>
+   			<h:inputTextarea cols="20" rols="4" value="#{adminLivrosBean.livro.descricao}" required="true" id="descricao"/>
+   			<h:message for="descricao"/>
    		</div>
    		<div>
    			<h:outputLabel value="Número de paginas"/>
-   			<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true" requiredMessage="Paginas obrigatorio">
+   			<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}" required="true" id="paginas">
    				<f:validateLongRange minimum="80"/>
    			</h:inputText>
+   			<h:message for="paginas"/>
    		</div>
    		<div>
    			<h:outputLabel value="Preço" />
-   			<h:inputText value="#{adminLivrosBean.livro.preco}" required="true" requiredMessage="Preço obrigatorio">
+   			<h:inputText value="#{adminLivrosBean.livro.preco}" required="true" id="preco">
    				<f:validateDoubleRange minimum="20" maximum="150"/>
    			</h:inputText>
+   			<h:message for="preco"/>
    		</div>
    		<div>
    			<h:outputLabel value="Autores" />

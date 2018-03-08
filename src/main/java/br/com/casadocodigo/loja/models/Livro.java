@@ -11,6 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Livro implements Serializable{
@@ -22,13 +28,21 @@ public class Livro implements Serializable{
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@NotBlank
 	private String titulo;
 	@Lob
+	@Length(min=10)
+	@NotBlank
 	private String descricao;
+	@DecimalMin(value="20")
+	@NotBlank
 	private BigDecimal preco;
+	@Min(50)
+	@NotBlank
 	private Integer numeroPaginas;
 	
 	@ManyToMany
+	@Size(min=1)
 	private List<Autor> autores = new ArrayList<Autor>();
 	
 	public String getTitulo() {

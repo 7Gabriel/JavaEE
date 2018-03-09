@@ -1,35 +1,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:ui="http://java.sun.com/jsf/facelets" 
-      xmlns:h="http://java.sun.com/jsf/html" 
-      xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
-	<h:messages />
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style-admin.css"></h:outputStylesheet>
+</h:head>
 
-   	<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}">
-   		<h:column>
-   		<f:facet name="header">Titulo</f:facet>
+<h:body>
+
+	<div class="container">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Casa do Codigo</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><h:link outcome="lista"
+						value="Lista" styleClass="nav-link" /></li>
+				<li class="nav-item"><h:link outcome="form" value="Cadastro"
+						styleClass="nav-link" /></li>
+				
+			</ul>
+		</div>
+		</nav>
+		<h1>Lista de Livros</h1>
+		<h:messages />
+
+		<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}"
+			class="table table-border table-striped table-hover">
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>
    			#{livro.titulo}
    		</h:column>
-   		<h:column>
-   		<f:facet name="header">Descrição</f:facet>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
    			#{livro.descricao}
    		</h:column>
-   		<h:column>
-   		<f:facet name="header">Preço</f:facet>
+			<h:column>
+				<f:facet name="header">Preço</f:facet>
    			#{livro.preco}
    		</h:column>
-   		
-   		<h:column>
-   		<f:facet name="header">Número Paginas</f:facet>
+
+			<h:column>
+				<f:facet name="header">Páginas</f:facet>
    			#{livro.numeroPaginas}
    		</h:column>
-   		<h:column>
-   		<f:facet name="header">Autores</f:facet>
-   		<ui:repeat var="autor" value="#{livro.autores}">
+			<h:column>
+				<f:facet name="header">Autores</f:facet>
+				<ui:repeat var="autor" value="#{livro.autores}">
    			#{autor.nome} |
    		</ui:repeat>
-   		</h:column>
-   	</h:dataTable>
-   
+			</h:column>
+			<h:column>
+				<f:facet name="header">Capa</f:facet>
+				<img src="#{request.contextPath}/file/#{livro.capaPath}"
+					alt="#{livro.titulo}" style="height: 40px; width: 40px" />
+			</h:column>
+		</h:dataTable>
+
+	</div>
+</h:body>
 </html>

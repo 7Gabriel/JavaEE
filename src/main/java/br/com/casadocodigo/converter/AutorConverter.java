@@ -18,7 +18,7 @@ public class AutorConverter implements Converter{
 			return null;
 		
 		Autor autor = new Autor();
-		autor.setId(Integer.getInteger(id));
+		autor.setId(Integer.valueOf(id));
 		return autor;
 	}
 

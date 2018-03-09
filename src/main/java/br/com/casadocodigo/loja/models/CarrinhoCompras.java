@@ -1,18 +1,30 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class CarrinhoCompras {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+import java.io.Serializable;
+
+@Named
+@SessionScoped
+public class CarrinhoCompras implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Set<CarrinhoItem> itens = new HashSet<CarrinhoItem>();
 	 
 	public void add(CarrinhoItem item){
 		itens.add(item);
 	}
-//	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<CarrinhoItem, Integer>();
-//	
-//	public void add(CarrinhoItem item){
-//		itens.put(item, quantidade);
-//	}
+
+	public List<CarrinhoItem> getItens() {
+		return new ArrayList<CarrinhoItem>(itens);
+	}
+
+	
 }

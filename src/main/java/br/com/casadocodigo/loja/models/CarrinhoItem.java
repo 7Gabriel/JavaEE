@@ -10,6 +10,7 @@ public class CarrinhoItem {
 	public CarrinhoItem(Livro livro) {
 		super();
 		this.livro = livro;
+		this.quantidade = 1;
 	}
 	public Livro getLivro() {
 		return livro;

@@ -35,5 +35,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 8.x Runtime"/>
+	<classpathentry kind="lib" path="C:/Users/JoaoGabriel/Downloads/javaee-api-7.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

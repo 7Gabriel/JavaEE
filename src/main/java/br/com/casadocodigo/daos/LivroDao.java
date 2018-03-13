@@ -28,12 +28,16 @@ public class LivroDao {
 
 	public List<Livro> ultimaLancamentos() {
 		String jpql = "select l from Livro l order by l.dataPublicacao DESC";
-		return manager.createQuery(jpql, Livro.class).setMaxResults(5).getResultList();
+		return manager.createQuery(jpql, Livro.class).setMaxResults(5)
+				//.setHint(QueryHints.HINT_CACHEABLE, true)
+				.getResultList();
 	}
 
 	public List<Livro> demaisLivros() {
 		String jpql = "select l from Livro l order by l.dataPublicacao DESC";
-		return manager.createQuery(jpql, Livro.class).setFirstResult(6).getResultList();
+		return manager.createQuery(jpql, Livro.class).setFirstResult(6)
+				//.setHint(QueryHints.HINT_CACHEABLE, true)
+				.getResultList();
 	}
 
 	public Livro buscarPorId(Integer id) {

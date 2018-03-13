@@ -1,0 +1,84 @@
+package br.com.casadocodigo.loja.models;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+
+@Entity
+public class Compra implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	private Usuario usuario;
+	
+	private String itens;
+	
+	private String uuid;
+	
+	private BigDecimal total;
+	
+	@PrePersist
+	public void createUUID(){
+		this.uuid = UUID.randomUUID().toString();
+	}
+	
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getItens() {
+		return itens;
+	}
+
+	public void setItens(String itens) {
+		this.itens = itens;
+	}
+
+	public String getuuid() {
+		return uuid;
+	}
+
+	public void setuuid(String uuid) {
+		uuid = uuid;
+	}
+
+
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+	
+
+}

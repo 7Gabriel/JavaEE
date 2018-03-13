@@ -1,6 +1,5 @@
 package br.com.casadocodigo.loja.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
@@ -28,5 +27,9 @@ public class CarrinhoCompraBean {
 	
 	public List<CarrinhoItem> getItens(){
 		return  carrinho.getItens();
+	}
+	
+	public void remover(CarrinhoItem item){
+		carrinho.remover(item);
 	}
 }

@@ -21,7 +21,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import br.com.casadocodigo.daos.CompraDao;
-import br.com.casadocodigo.infra.MailSender;
 import br.com.casadocodigo.infra.PagamentoGatway;
 import br.com.casadocodigo.loja.models.Compra;
 
@@ -54,7 +53,7 @@ public class PagamentoService {
 		
 		executor.submit(() -> {
 			try{
-			String resposta = pagamentoGatway.realizarPagamento(compra.getTotal());
+			pagamentoGatway.realizarPagamento(compra.getTotal());
 
 			producer.send(destination, compra.getuuid());
 			

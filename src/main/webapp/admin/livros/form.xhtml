@@ -4,31 +4,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-	<h:outputStylesheet library="css" name="style-admin.css"></h:outputStylesheet>
-</h:head>
+<ui:composition template="/templates/_admin_template.xhtml">
 
-<h:body>
-	<div class="container">
-	 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Casa do Codigo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<ui:param name="cadastro" value="active" />
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-         
-          <li class="nav-item">
-            <h:link outcome="lista" value="Lista" styleClass="nav-link"/>
-          </li>
-          <li class="nav-item active">
-          	<h:link outcome="form" value="Cadastro" styleClass="nav-link"/>
-          </li>
-        </ul>
-      </div>
-    </nav>
+	<ui:define name="body">
+
 		<h:form enctype="multipart/form-data">
 		<h1>Cadastro de Livros</h1>
 			<h:messages />
@@ -90,6 +71,6 @@
 				action="#{adminLivrosBean.salvar()}" styleClass="btn btn-dark"/>
 
 		</h:form>
-	</div>
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>

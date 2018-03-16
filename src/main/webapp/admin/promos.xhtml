@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/_admin_template.xhtml">
+
+	<ui:param name="cadastro" value="active" />
+
+	<ui:define name="body">
+
+		<h1>Enviar Promoção Relâmpago</h1>
+		
+		<h:form>
+		
+		<div class="form-group">
+				<h:outputLabel value="Titulo da Promoção" />
+				<h:inputText value="#{adminPromosBean.promo.titulo}" required="true"
+					id="titulo" styleClass="form-control"/>
+				<h:message for="titulo" />
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Livros" />
+				<h:selectOneMenu value="#{adminPromosBean.promo.livro.id}"
+					converter="javax.faces.Integer" id="livros" styleClass="form-control">
+					<f:selectItems var="livro" value="#{adminListaLivrosBean.livros}"
+						itemValue="#{livro.id}" itemLabel="#{livro.titulo}">
+					</f:selectItems>
+				</h:selectOneMenu>
+				<h:message for="livros"/>
+			</div>
+			
+			<h:commandButton value="Enviar Promoção"
+				action="#{adminPromosBean.enviar()}" styleClass="btn btn-dark"/>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

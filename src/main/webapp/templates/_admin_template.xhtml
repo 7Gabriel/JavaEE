@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style-admin.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+	<div class="container"> 
+	<h:form>
+
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#{request.contextPath}/index.xhtml">Casa
+			do Código</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><h:link outcome="/admin/livros/lista" value="Lista"
+						styleClass="nav-link" /></li>
+				<li class="nav-item"><h:link outcome="/admin/livros/form" value="Cadastro"
+						styleClass="nav-link" /></li>
+				<li class="nav-item"><h:link outcome="/admin/promos" value="Promoção" styleClass="nav-link" /></li>
+				<li class="nav-link">Bem Vindo, #{currentUser.get().email}</li>
+				<li class="nav-item"><h:commandLink action="#{currentUser.logout()}" value="Logout" styleClass="nav-link"/></li>
+			</ul>
+
+		</div>
+		</nav>
+	
+	</h:form>
+		</div>
+	<div class="container">
+
+		<ui:insert name="body" />
+	</div>
+</h:body>
+</html>
